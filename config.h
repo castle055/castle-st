@@ -5,11 +5,12 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Iosevka:pixelsize=16:antialias=true:autohint=true";
+//static char *font = "Iosevka:pixelsize=16:antialias=true";//:autohint=true";
+static char *font = "Fira Code Retina:pixelsize=14:antialias=true";//:autohint=true";
 static int borderpx = 10;
 
-float alpha = 0.2;		// Sets alpha for Focussed instances
-float alphaUnfocussed = 0.1;	// Sets alpha for Unfocussed instances
+float alpha = 0.7;		// Sets alpha for Focussed instances
+float alphaUnfocussed = 0.5;	// Sets alpha for Unfocussed instances
 
 
 /*
@@ -30,8 +31,8 @@ char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 char *vtiden = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
-static float cwscale = 0.9;
-static float chscale = 0.9;
+static float cwscale = 1.1;
+static float chscale = 1.1;
 
 /*
  * word delimiter string
@@ -74,6 +75,18 @@ static unsigned int blinktimeout = 800;
  * thickness of underline and bar cursors
  */
 static unsigned int cursorthickness = 2;
+
+/*
+* 1: render most of the lines/blocks characters without using the font for
+*    perfect alignment between cells (U2500 - U259F except dashes/diagonals).
+*    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
+* 0: disable (render all U25XX glyphs normally from the font).
+*/
+const int boxdraw = 1;
+const int boxdraw_bold = 1;
+
+/* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
+const int boxdraw_braille = 0;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
@@ -129,6 +142,7 @@ static const char *colorname[] = {
 	"#cccccc",
 	"#555555",
 	"#fcae1e",
+	"#050505",
 };
 
 
@@ -137,7 +151,7 @@ static const char *colorname[] = {
  * foreground, background, cursor, reverse cursor
  */
 unsigned int defaultfg = 258;
-unsigned int defaultbg = 0;
+unsigned int defaultbg = 259;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
