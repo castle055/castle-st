@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 //static char *font = "Iosevka:pixelsize=16:antialias=true";//:autohint=true";
-static char *font = "Fira Code Retina:pixelsize=14:antialias=true";//:autohint=true";
+static char *font = "FiraCode Nerd Font Mono:pixelsize=14:autoalias=false:autohint=true";
 static int borderpx = 10;
 
 float alpha = 0.7;		// Sets alpha for Focussed instances
@@ -31,8 +31,8 @@ char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 char *vtiden = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
-static float cwscale = 0.85;
-static float chscale = 1.1;
+static float cwscale = 0.88;
+static float chscale = 1.0;
 
 /*
  * word delimiter string
